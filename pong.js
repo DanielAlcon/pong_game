@@ -22,7 +22,7 @@ var step = function () {
 };
 
 var update = function (){
-	ball.update(player.paddle, computer.paddle)
+	ball.update(player.paddle, computer.paddle);
 };
 
 /*var render = function () {
@@ -89,10 +89,28 @@ function Ball(x,y){
 }
 
 Ball.prototype.update = function (paddle1, paddle2){
-	var top_x = this.x - 5; // arriba
-	var top_y = this.y - 5; // derecha
-	var bottom_x = this.x + 5; // abajo
-	var bottom_y = this.y + 5; // izqda
+	var top_x = this.x - 5; //drcha
+	var top_y = this.y - 5; //abajo
+	var bottom_x = this.x + 5; //
+	var bottom_y = this.y + 5; //
 
-	if (this.x )
+	this.x += this.x_speed;
+  	this.y += this.y_speed;
+
+  	if (this.y < 0 || this.y > 600){ // minipunto!
+  		this.x = 200;
+  		this.y = 300;
+  		this.x_speed = 0;
+  		this.y_speed = 3;
+  	}
+
+  	if (top_y > 300){
+  		if (top_y < (paddle1.y + paddle1.height)) {
+  			this.y_speed = 3;
+  			this.y += this.y_speed;
+  		} else {
+  			this.y_speed = -3;
+  			this.y += this.y_speed;
+  		}
+  	}
 };
